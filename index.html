@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="APROFAR - Unindo proprietários e profissionais de farmácia do Estado de São Paulo desde 1994." />
+  <title>APROFAR - Associação dos Proprietários e Farmacêuticos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --verde:#0E7C5A;
+      --verde-escuro:#0a5b42;
+      --verde-claro:#e8f5ef;
+      --azul:#0B3D5C;
+      --areia:#f7f6f1;
+      --texto:#1f2a37;
+      --cinza:#5b6573;
+      --branco:#ffffff;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--texto);
+      background:var(--branco);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+    /* HEADER */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(180%) blur(8px);
+      border-bottom:1px solid #eee;
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--verde-escuro);font-size:20px}
+    .logo .badge{
+      width:38px;height:38px;border-radius:10px;
+      background:linear-gradient(135deg,var(--verde),var(--azul));
+      display:grid;place-items:center;color:#fff;font-weight:800;
+    }
+    nav ul{display:flex;gap:28px;list-style:none}
+    nav a{font-weight:500;color:var(--texto);position:relative;padding:6px 0}
+    nav a:hover{color:var(--verde-escuro)}
+    nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--verde);transition:.25s}
+    nav a:hover::after{width:100%}
+    .btn{
+      display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;
+      transition:.25s;cursor:pointer;border:none;font-size:15px;
+    }
+    .btn-primary{background:var(--verde);color:#fff}
+    .btn-primary:hover{background:var(--verde-escuro);transform:translateY(-2px);box-shadow:var(--shadow)}
+    .btn-ghost{background:transparent;color:var(--verde-escuro);border:2px solid var(--verde)}
+    .btn-ghost:hover{background:var(--verde);color:#fff}
+    .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--verde-escuro)}
+
+    /* HERO */
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(1000px 600px at 90% -10%, #cdebd9 0%, transparent 60%),
+        radial-gradient(800px 500px at -10% 110%, #d9e7f2 0%, transparent 60%),
+        var(--areia);
+      padding:90px 0 80px;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .eyebrow{
+      display:inline-block;background:var(--verde-claro);color:var(--verde-escuro);
+      padding:6px 14px;border-radius:999px;font-weight:600;font-size:13px;margin-bottom:18px;
+    }
+    .hero h1{font-size:clamp(34px,5vw,52px);line-height:1.1;font-weight:800;color:var(--azul);margin-bottom:18px}
+    .hero h1 span{color:var(--verde)}
+    .hero p.lead{font-size:18px;color:var(--cinza);max-width:560px;margin-bottom:30px}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-art{
+      background:#fff;border-radius:24px;box-shadow:var(--shadow);
+      padding:28px;position:relative;
+    }
+    .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .stat{background:var(--areia);border-radius:14px;padding:18px}
+    .stat .n{font-size:30px;font-weight:800;color:var(--verde-escuro)}
+    .stat .l{font-size:13px;color:var(--cinza);font-weight:500}
+    .pulse{
+      position:absolute;top:-14px;right:-14px;background:var(--verde);color:#fff;
+      padding:8px 14px;border-radius:999px;font-size:12px;font-weight:700;
+      box-shadow:0 0 0 0 rgba(14,124,90,.5);animation:pulse 2s infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(14,124,90,.5)}
+      70%{box-shadow:0 0 0 16px rgba(14,124,90,0)}
+      100%{box-shadow:0 0 0 0 rgba(14,124,90,0)}
+    }
+
+    /* SECTIONS */
+    section{padding:80px 0}
+    .section-head{text-align:center;max-width:720px;margin:0 auto 50px}
+    .section-head .eyebrow{margin-bottom:14px}
+    .section-head h2{font-size:clamp(28px,3.5vw,40px);font-weight:800;color:var(--azul);margin-bottom:14px;line-height:1.2}
+    .section-head p{color:var(--cinza);font-size:17px}
+
+    /* BENEFITS */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .card{
+      background:#fff;border:1px solid #eee;border-radius:var(--radius);
+      padding:30px;transition:.3s;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--verde-claro)}
+    .card .icon{
+      width:52px;height:52px;border-radius:12px;
+      background:var(--verde-claro);color:var(--verde-escuro);
+      display:grid;place-items:center;margin-bottom:18px;font-size:24px;
+    }
+    .card h3{font-size:19px;font-weight:700;color:var(--azul);margin-bottom:10px}
+    .card p{color:var(--cinza);font-size:15px}
+
+    /* ABOUT */
+    .about{background:var(--areia)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .about h2{font-size:clamp(28px,3.5vw,40px);font-weight:800;color:var(--azul);margin-bottom:18px;line-height:1.2}
+    .about p{color:var(--cinza);margin-bottom:14px;font-size:16px}
+    .checklist{list-style:none;margin-top:20px}
+    .checklist li{padding:10px 0 10px 32px;position:relative;font-weight:500}
+    .checklist li::before{
+      content:"✓";position:absolute;left:0;top:10px;
+      width:22px;height:22px;border-radius:50%;
+      background:var(--verde);color:#fff;font-size:13px;
+      display:grid;place-items:center;font-weight:800;
+    }
+    .about-art{
+      background:linear-gradient(135deg,var(--verde),var(--azul));
+      border-radius:24px;padding:40px;color:#fff;position:relative;overflow:hidden;
+      min-height:380px;display:flex;flex-direction:column;justify-content:center;
+    }
+    .about-art h3{font-size:28px;margin-bottom:14px;font-weight:700}
+    .about-art .since{font-size:80px;font-weight:800;line-height:1;opacity:.15;position:absolute;bottom:10px;right:20px}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .service{
+      display:flex;gap:18px;padding:24px;border-radius:var(--radius);
+      background:#fff;border:1px solid #eee;transition:.25s;
+    }
+    .service:hover{border-color:var(--verde);box-shadow:var(--shadow)}
+    .service .icon{flex-shrink:0;width:50px;height:50px;border-radius:12px;background:var(--verde-claro);color:var(--verde-escuro);display:grid;place-items:center;font-size:22px}
+    .service h4{font-size:17px;font-weight:700;color:var(--azul);margin-bottom:6px}
+    .service p{color:var(--cinza);font-size:14.5px}
+
+    /* CTA SECTION */
+    .cta-section{
+      background:linear-gradient(135deg,var(--verde),var(--azul));
+      color:#fff;text-align:center;border-radius:24px;padding:70px 40px;margin:80px auto;
+      max-width:1100px;
+    }
+    .cta-section h2{font-size:clamp(26px,3.5vw,36px);font-weight:800;margin-bottom:14px}
+    .cta-section p{font-size:17px;opacity:.92;max-width:600px;margin:0 auto 30px}
+    .cta-section .btn-primary{background:#fff;color:var(--verde-escuro)}
+    .cta-section .btn-primary:hover{background:var(--areia)}
+
+    /* CONTATO */
+    .contact{background:var(--areia)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+    .contact-info h3{color:var(--azul);font-size:22px;margin-bottom:14px;font-weight:700}
+    .contact-info p{color:var(--cinza);margin-bottom:24px}
+    .contact-item{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+    .contact-item .ico{width:42px;height:42px;border-radius:10px;background:#fff;color:var(--verde-escuro);display:grid;place-items:center;flex-shrink:0;font-size:18px;box-shadow:var(--shadow)}
+    .contact-item strong{display:block;color:var(--azul);font-size:15px}
+    .contact-item span{color:var(--cinza);font-size:14.5px}
+
+    form{background:#fff;padding:30px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .field{margin-bottom:16px}
+    label{display:block;font-size:14px;font-weight:600;color:var(--azul);margin-bottom:6px}
+    input,textarea,select{
+      width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;
+      font-family:inherit;font-size:15px;transition:.2s;background:#fafafa;
+    }
+    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--verde);background:#fff;box-shadow:0 0 0 3px rgba(14,124,90,.12)}
+    textarea{resize:vertical;min-height:110px}
+    form button{width:100%;margin-top:8px}
+
+    /* FOOTER */
+    footer{background:var(--azul);color:#cfd8e0;padding:60px 0 24px}
+    .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+    footer h5{color:#fff;font-size:15px;margin-bottom:16px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+    footer ul{list-style:none}
+    footer li{margin-bottom:8px}
+    footer a:hover{color:#fff}
+    .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:13.5px;opacity:.8}
+
+    /* RESPONSIVO */
+    @media (max-width:920px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+      .cards{grid-template-columns:1fr 1fr}
+      .services-grid{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr 1fr}
+      nav ul{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:14px;border-bottom:1px solid #eee}
+      nav ul.open{display:flex}
+      .menu-toggle{display:block}
+    }
+    @media (max-width:560px){
+      .cards{grid-template-columns:1fr}
+      .stat-grid{grid-template-columns:1fr 1fr}
+      .foot-grid{grid-template-columns:1fr}
+      section{padding:60px 0}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <div class="badge">A</div>
+      APROFAR
+    </a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#beneficios">Benefícios</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a href="#contato" class="btn btn-primary" style="padding:10px 18px">Associe-se</a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Desde 1994 · Estado de São Paulo</span>
+      <h1>Unindo proprietários e <span>profissionais de farmácia</span> por um setor mais forte</h1>
+      <p class="lead">A APROFAR representa, capacita e defende os interesses do setor farmacêutico paulista, promovendo ética, valorização profissional e crescimento sustentável.</p>
+      <div class="cta-row">
+        <a href="#contato" class="btn btn-primary">Quero me associar</a>
+        <a href="#sobre" class="btn btn-ghost">Conheça a APROFAR</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="pulse">+30 anos de história</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="n">30+</div><div class="l">Anos de atuação</div></div>
+        <div class="stat"><div class="n">1.000+</div><div class="l">Associados</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">Compromisso ético</div></div>
+        <div class="stat"><div class="n">SP</div><div class="l">Estado de atuação</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section id="beneficios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Por que se associar</span>
+      <h2>Benefícios que fortalecem sua farmácia</h2>
+      <p>Ser APROFAR é fazer parte de uma rede de apoio, conhecimento e representação em todo o estado.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">⚖️</div>
+        <h3>Assessoria Jurídica</h3>
+        <p>Suporte especializado em direito farmacêutico, trabalhista e sanitário para proteger o seu negócio.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎓</div>
+        <h3>Capacitação Profissional</h3>
+        <p>Cursos, eventos e treinamentos exclusivos para proprietários e equipes técnicas.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Representatividade</h3>
+        <p>Voz ativa junto a órgãos reguladores e entidades do setor, defendendo seus direitos.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💼</div>
+        <h3>Networking</h3>
+        <p>Conexão com proprietários, fornecedores e profissionais de toda a cadeia farmacêutica.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Informação Setorial</h3>
+        <p>Boletins, análises de mercado e atualizações regulatórias para você decidir com segurança.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏷️</div>
+        <h3>Convênios Exclusivos</h3>
+        <p>Descontos e parcerias com fornecedores, distribuidoras e prestadores de serviços.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="about">
+  <div class="container about-grid">
+    <div>
+      <span class="eyebrow">Nossa história</span>
+      <h2>Mais de 30 anos defendendo a farmácia paulista</h2>
+      <p>Fundada em 1994, a APROFAR nasceu da união entre proprietários e farmacêuticos comprometidos com a ética, a valorização do profissional e o fortalecimento do varejo farmacêutico no Estado de São Paulo.</p>
+      <p>Atuamos como ponte entre o associado e o setor, promovendo educação continuada, defesa de classe e crescimento sustentável.</p>
+      <ul class="checklist">
+        <li>Atendimento personalizado a cada associado</li>
+        <li>Transparência e gestão democrática</li>
+        <li>Inovação e atualização constante</li>
+        <li>Parcerias estratégicas para o setor</li>
+      </ul>
+    </div>
+    <div class="about-art">
+      <h3>Missão</h3>
+      <p>Representar, capacitar e valorizar os profissionais e proprietários de farmácia, promovendo um setor farmacêutico mais ético, sustentável e tecnicamente forte.</p>
+      <div class="since">1994</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Serviços</span>
+      <h2>O que oferecemos aos nossos associados</h2>
+      <p>Uma estrutura completa pensada para o dia a dia da sua farmácia.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service">
+        <div class="icon">📜</div>
+        <div><h4>Regularização e Licenciamento</h4><p>Orientação para Anvisa, Vigilância Sanitária, CRF e demais órgãos.</p></div>
+      </div>
+      <div class="service">
+        <div class="icon">📚</div>
+        <div><h4>Educação Continuada</h4><p>Workshops, palestras e cursos com especialistas do setor.</p></div>
+      </div>
+      <div class="service">
+        <div class="icon">📰</div>
+        <div><h4>Comunicação Setorial</h4><p>Newsletter, boletins regulatórios e canal direto com a diretoria.</p></div>
+      </div>
+      <div class="service">
+        <div class="icon">📅</div>
+        <div><h4>Eventos e Convenções</h4><p>Encontros anuais, painéis técnicos e oportunidades de relacionamento.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="container">
+  <div class="cta-section">
+    <h2>Faça parte da maior comunidade de farmácia de São Paulo</h2>
+    <p>Junte-se a centenas de associados que confiam na APROFAR para apoiar e fortalecer o seu negócio.</p>
+    <a href="#contato" class="btn btn-primary">Quero me associar agora</a>
+  </div>
+</div>
+
+<!-- CONTATO -->
+<section id="contato" class="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">Fale conosco</span>
+      <h3 style="margin-top:14px">Estamos aqui para ajudar</h3>
+      <p>Entre em contato com a APROFAR e tire suas dúvidas sobre como se associar.</p>
+      <div class="contact-item">
+        <div class="ico">📍</div>
+        <div><strong>Endereço</strong><span>Estado de São Paulo · Brasil</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="ico">✉️</div>
+        <div><strong>E-mail</strong><span>contato@aprofar.com.br</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="ico">📞</div>
+        <div><strong>Telefone</strong><span>(11) 0000-0000</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="ico">🕐</div>
+        <div><strong>Horário</strong><span>Segunda a sexta · 9h às 18h</span></div>
+      </div>
+    </div>
+
+    <form onsubmit="enviar(event)">
+      <div class="field">
+        <label for="nome">Nome completo</label>
+        <input id="nome" type="text" required placeholder="Seu nome" />
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" required placeholder="seu@email.com" />
+      </div>
+      <div class="field">
+        <label for="assunto">Assunto</label>
+        <select id="assunto" required>
+          <option value="">Selecione...</option>
+          <option>Quero me associar</option>
+          <option>Dúvidas sobre serviços</option>
+          <option>Imprensa</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="msg">Mensagem</label>
+        <textarea id="msg" required placeholder="Como podemos ajudar?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:14px">
+          <div class="badge">A</div>APROFAR
+        </div>
+        <p style="font-size:14px;line-height:1.7">Associação dos Proprietários e Farmacêuticos do Estado de São Paulo. Unindo o setor desde 1994.</p>
+      </div>
+      <div>
+        <h5>Institucional</h5>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#beneficios">Benefícios</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Associado</h5>
+        <ul>
+          <li><a href="#contato">Associe-se</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#">Área restrita</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Siga-nos</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      © <span id="ano"></span> APROFAR · Todos os direitos reservados
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Menu mobile
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  if(btn){ btn.addEventListener('click', () => menu.classList.toggle('open')); }
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Ano no footer
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  // Formulário (placeholder)
+  function enviar(e){
+    e.preventDefault();
+    alert('Obrigado! Sua mensagem foi enviada. Em breve entraremos em contato.');
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
